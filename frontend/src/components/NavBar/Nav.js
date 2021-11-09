@@ -15,6 +15,10 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import {useNavigate} from 'react-router-dom';
+
+//Logout
+import LogoutButton from '../Login/LogoutButton';
 
 const Search = styled('div')(({theme}) => ({
   position: 'relative',
@@ -57,6 +61,7 @@ const StyledInputBase = styled(InputBase)(({theme}) => ({
 }));
 
 export default function PrimarySearchAppBar() {
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -173,7 +178,9 @@ export default function PrimarySearchAppBar() {
             component='div'
             sx={{display: {xs: 'none', sm: 'block'}}}
           >
-            Blog
+            <IconButton color='inherit' onClick={() => navigate('/')}>
+              Blog{' '}
+            </IconButton>
           </Typography>
           <Search>
             <SearchIconWrapper>
@@ -206,7 +213,6 @@ export default function PrimarySearchAppBar() {
             </IconButton>
             <IconButton
               size='large'
-              edge='end'
               aria-label='account of current user'
               aria-controls={menuId}
               aria-haspopup='true'
@@ -214,6 +220,10 @@ export default function PrimarySearchAppBar() {
               color='inherit'
             >
               <AccountCircle />
+            </IconButton>
+
+            <IconButton size='large' color='inherit' edge='end'>
+              <LogoutButton />
             </IconButton>
           </Box>
           <Box sx={{display: {xs: 'flex', md: 'none'}}}>

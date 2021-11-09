@@ -1,11 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const routesHandler = require('./routes/handler.js');
+// const routesHandler = require('./backend/routes/');
 
 const app = express();
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-app.use('/', routesHandler);
+// app.use('/', routesHandler);
 
 const PORT = 4000; // backend routing port
 app.listen(PORT, () => {
