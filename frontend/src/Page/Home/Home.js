@@ -34,12 +34,12 @@ function Home() {
     dispatch(getPosts());
   }, [dispatch]);
 
-  // Dynamically add cards
-  const cardArr = [];
-  const lengthofCards = 6;
-  for (let i = 0; i < lengthofCards; i++) {
-    cardArr.push(<Posts />);
-  }
+  // // Dynamically add cards
+  // const cardArr = [];
+  // const lengthofCards = 6;
+  // for (let i = 0; i < lengthofCards; i++) {
+  //   cardArr.push(<Posts />);
+  // }
 
   return (
     <div className={classes.root}>
@@ -47,7 +47,9 @@ function Home() {
       <p className={classes.paragraph}>
         This website was created using MERN stack
       </p>
-      <div className={classes.boxes}>{cardArr}</div>
+      <div className={classes.boxes}>
+        <Posts />
+      </div>
     </div>
   );
 }

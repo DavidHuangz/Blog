@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import {TextField, Button, Typography} from '@material-ui/core';
+import {TextField, IconButton, Typography, Paper} from '@material-ui/core';
 import {useDispatch, useSelector} from 'react-redux';
 import FileBase from 'react-file-base64';
-// import {createPost, updatePost} from '../../actions/posts';
+import {createPost, updatePost} from '../../actions/posts';
 import {makeStyles} from '@material-ui/core/styles';
-import {IconButton} from '@mui/material';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     width: '97%',
     margin: '10px 0',
   },
-  formButtons: {
+  FormButtons: {
     display: 'flex',
     flexDirection: 'column',
   },
@@ -64,9 +63,10 @@ const Form = ({currentId, setCurrentId}) => {
   };
 
   const handleSubmit = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
+
     // if (currentId === 0) {
-    //   dispatch(createPost(postData));
+    dispatch(createPost(postData));
     //   clear();
     // } else {
     //   dispatch(updatePost(currentId, postData));
@@ -75,7 +75,7 @@ const Form = ({currentId, setCurrentId}) => {
   };
 
   return (
-    <div>
+    <div className={classes.paper}>
       <form
         autoComplete='off'
         noValidate
@@ -130,14 +130,13 @@ const Form = ({currentId, setCurrentId}) => {
             }
           />
         </div>
-        <div className={classes.formButtons}>
+        <div className={classes.FormButtons}>
           <IconButton
             className={classes.buttonSubmit}
             variant='contained'
             color='primary'
             size='large'
             type='submit'
-            fullWidth
           >
             Submit
           </IconButton>
@@ -146,7 +145,6 @@ const Form = ({currentId, setCurrentId}) => {
             color='secondary'
             size='small'
             onClick={clear}
-            fullWidth
           >
             Clear
           </IconButton>
