@@ -200,7 +200,11 @@ export default function NavLoggged() {
           </Search>
           <Box sx={{flexGrow: 1}} />
           <Box sx={{display: {xs: 'none', md: 'flex'}}}>
-            <IconButton size='large' color='inherit'>
+            <IconButton
+              size='large'
+              color='inherit'
+              onClick={() => navigate('/CreatePost')}
+            >
               <AddCircleIcon />
             </IconButton>
 

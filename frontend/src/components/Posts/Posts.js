@@ -1,4 +1,5 @@
 import React from 'react';
+import {useSelector} from 'react-redux';
 import {makeStyles} from '@material-ui/core';
 import {
   Button,
@@ -8,7 +9,7 @@ import {
   Typography,
   Card,
 } from '@mui/material';
-import reptile from '../Page/Home/reptile.jpg';
+import reptile from './reptile.jpg';
 
 var UseStyles = makeStyles({
   Box: {
@@ -16,8 +17,13 @@ var UseStyles = makeStyles({
   },
 });
 
-function MediaCard() {
+function Posts() {
   const classes = UseStyles();
+
+  //redux
+  const posts = useSelector((state) => state.posts);
+  console.log(posts);
+
   return (
     <Card className={classes.Box} sx={{maxWidth: 345}}>
       <CardMedia component='img' height='140' img src={reptile} alt='reptile' />
@@ -38,4 +44,4 @@ function MediaCard() {
   );
 }
 
-export default MediaCard;
+export default Posts;

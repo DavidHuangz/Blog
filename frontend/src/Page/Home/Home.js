@@ -1,6 +1,10 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import MediaCard from '../../components/MediaCard';
+import Posts from '../../components/Posts/Posts';
+
+// redux
+import {useDispatch} from 'react-redux';
+import {getPosts} from '../../actions/posts';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,11 +28,17 @@ const useStyles = makeStyles((theme) => ({
 function Home() {
   const classes = useStyles();
 
+  // redux
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getPosts());
+  }, [dispatch]);
+
   // Dynamically add cards
   const cardArr = [];
   const lengthofCards = 6;
   for (let i = 0; i < lengthofCards; i++) {
-    cardArr.push(<MediaCard />);
+    cardArr.push(<Posts />);
   }
 
   return (
