@@ -8,13 +8,17 @@ import {
   CardMedia,
   Typography,
   Card,
+  IconButton,
 } from '@mui/material';
 import reptile from './reptile.jpg';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 var UseStyles = makeStyles({
   Box: {
     margin: 20,
   },
+  settingsButton: {marginLeft: 190},
 });
 
 function Posts() {
@@ -38,7 +42,14 @@ function Posts() {
       </CardContent>
       <CardActions>
         <Button size='small'>Like (1)</Button>
-        <Button size='small'>Delete</Button>
+        <div className={classes.settingsButton}>
+          <IconButton size='small'>
+            <DeleteIcon />
+          </IconButton>
+          <IconButton aria-label='settings'>
+            <EditIcon />
+          </IconButton>
+        </div>
       </CardActions>
     </Card>
   );

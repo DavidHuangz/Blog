@@ -5,9 +5,12 @@ import {Box} from '@mui/system';
 const useStyles = makeStyles((theme) => ({
   root: {
     position: 'absolute',
-    left: 0,
     bottom: 0,
+    left: 0,
     right: 0,
+    '@media (max-width: 800px)': {
+      position: 'relative',
+    },
   },
 }));
 

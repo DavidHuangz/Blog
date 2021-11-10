@@ -49,6 +49,9 @@ function Home() {
       </p>
       <div className={classes.boxes}>
         <Posts />
+        <Posts />
+        <Posts />
+        <Posts />
       </div>
     </div>
   );
