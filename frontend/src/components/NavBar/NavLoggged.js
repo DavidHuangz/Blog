@@ -16,6 +16,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import {useNavigate} from 'react-router-dom';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 //Logout
 import LogoutButton from '../Login/LogoutButton';
@@ -60,7 +61,7 @@ const StyledInputBase = styled(InputBase)(({theme}) => ({
   },
 }));
 
-export default function PrimarySearchAppBar() {
+export default function NavLoggged() {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -199,6 +200,10 @@ export default function PrimarySearchAppBar() {
           </Search>
           <Box sx={{flexGrow: 1}} />
           <Box sx={{display: {xs: 'none', md: 'flex'}}}>
+            <IconButton size='large' color='inherit'>
+              <AddCircleIcon />
+            </IconButton>
+
             <IconButton
               size='large'
               aria-label='show 4 new mails'

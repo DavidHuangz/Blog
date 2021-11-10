@@ -15,7 +15,11 @@ function Copyright() {
   return (
     <Typography variant='body2' color='text.secondary' align='center'>
       {'Copyright © '}
-      <Link color='inherit' href='https://sites.google.com/view/applevr/home'>
+      <Link
+        color='inherit'
+        target='_blank'
+        href='https://sites.google.com/view/applevr/home'
+      >
         Your Website
       </Link>{' '}
       {new Date().getFullYear()}

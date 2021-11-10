@@ -3,8 +3,8 @@ import {Routes, Route, Navigate, BrowserRouter} from 'react-router-dom';
 import {useAuth0} from '@auth0/auth0-react';
 
 // imports from components
-import Nav from './components/NavBar/Nav';
-import NavLogin from './components/NavBar/NavLogin';
+import NavLoggged from './components/NavBar/NavLoggged';
+import NavNotLogged from './components/NavBar/NavNotLogged';
 import Footer from './components/Footer';
 
 // Page
@@ -16,7 +16,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      {!isAuthenticated ? <NavLogin /> : <Nav />}
+      {!isAuthenticated ? <NavNotLogged /> : <NavLoggged />}
       <Routes>
         <Route path='/Home' element={<Home />} />
         <Route path='/LoginPage' element={<LoginPage />} />

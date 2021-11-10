@@ -10,7 +10,7 @@ import {useNavigate} from 'react-router-dom';
 // Login
 import LoginButton from '../Login/LoginButton';
 
-export default function NavLogin() {
+export default function NavNotLogged() {
   const navigate = useNavigate();
 
   return (
