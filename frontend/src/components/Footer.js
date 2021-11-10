@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
     bottom: 0,
     left: 0,
     right: 0,
-    '@media (max-width: 800px)': {
+    '@media (max-width: 1030px)': {
       position: 'relative',
     },
   },
