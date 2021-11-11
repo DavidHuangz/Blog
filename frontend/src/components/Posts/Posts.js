@@ -15,6 +15,11 @@ import {
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+
+// redux
+import {useDispatch} from 'react-redux';
+import {deletePost, likePost} from '../../actions/posts';
 
 // importing component
 import FormModal from '../Form/FormModal';
@@ -47,6 +52,7 @@ var UseStyles = makeStyles({
 
 function Posts({post, currentID, setCurrentID}) {
   const classes = UseStyles();
+  const dispatch = useDispatch();
 
   // Modal for form editing
   const [open, setOpen] = React.useState(false);
@@ -112,11 +118,14 @@ function Posts({post, currentID, setCurrentID}) {
           </CardContent>
         </div>
         <CardActions>
-          <Button size='small' onClick={() => alert('Like')}>
-            Like ({post.likeCount})
+          <Button size='small' onClick={() => dispatch(likePost(post._id))}>
+            <ThumbUpIcon /> &nbsp;({post.likeCount})
           </Button>
           <div className={classes.settingsButton}>
-            <IconButton size='small' onClick={() => alert('Delete')}>
+            <IconButton
+              size='small'
+              onClick={() => dispatch(deletePost(post._id))}
+            >
               <DeleteIcon />
             </IconButton>
             <IconButton aria-label='settings' onClick={handleOpen}>
