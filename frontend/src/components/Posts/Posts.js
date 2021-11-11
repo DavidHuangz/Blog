@@ -38,7 +38,7 @@ var UseStyles = makeStyles({
   settingsButton: {marginLeft: 190},
 });
 
-function Posts({post, cuurentID, setCUrrentID}) {
+function Posts({post, currentID, setCUrrentID}) {
   const classes = UseStyles();
 
   // Modal for form editing
@@ -58,7 +58,7 @@ function Posts({post, cuurentID, setCUrrentID}) {
         aria-labelledby='modal-modal-title'
         aria-describedby='modal-modal-description'
       >
-        <FormModal cuurentID={cuurentID} setCUrrentID={setCUrrentID} />
+        <FormModal currentID={currentID} setCUrrentID={setCUrrentID} />
       </Modal>
     );
   }

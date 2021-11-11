@@ -8,7 +8,7 @@ import {useDispatch} from 'react-redux';
 import {getPosts} from '../../actions/posts';
 import {useSelector} from 'react-redux';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     display: 'flex',
     justifyContent: 'Center',
@@ -34,7 +34,7 @@ function Home() {
   }
 
   // redux
-  const [cuurentID, setCUrrentID] = useState(0);
+  const [currentID, setCUrrentID] = useState(0);
   const dispatch = useDispatch();
 
   // UseSelector
@@ -43,7 +43,7 @@ function Home() {
 
   useEffect(() => {
     dispatch(getPosts());
-  }, [dispatch]);
+  }, [currentID, dispatch]);
 
   return (
     <>
@@ -60,7 +60,7 @@ function Home() {
           >
             <Posts
               post={post}
-              cuurentID={cuurentID}
+              currentID={currentID}
               setCUrrentID={setCUrrentID}
             />
           </Grid>

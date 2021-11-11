@@ -13,11 +13,14 @@ app.use(cors());
 app.use('/posts', postRoutes);
 
 const CONNECTION_URL =
-  'mongodb+srv://dav3e:2218@cluster0.uhnrq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+  'mongodb+srv://dav3e:2218@clusterblog.uhnrq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 5000;
 
 mongoose
-  .connect(CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: true})
+  .connect(CONNECTION_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() =>
     app.listen(PORT, () =>
       console.log(`Server Running on Port: http://localhost:${PORT}`)
