@@ -1,5 +1,6 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core';
+import moment from 'moment';
 
 // importing icons & others
 import {
@@ -29,6 +30,12 @@ var UseStyles = makeStyles({
   cardClick: {
     cursor: 'pointer',
   },
+  tag: {
+    paddingTop: 5,
+  },
+  titleMessage: {
+    paddingTop: 10,
+  },
   messageText: {
     overflow: 'hidden',
     textOverflow: 'ellipsis',
@@ -38,14 +45,14 @@ var UseStyles = makeStyles({
   settingsButton: {marginLeft: 190},
 });
 
-function Posts({post, currentID, setCUrrentID}) {
+function Posts({post, currentID, setCurrentID}) {
   const classes = UseStyles();
 
   // Modal for form editing
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
-    setCUrrentID(post._id);
+    setCurrentID(post._id);
     console.log('CurrentPostID: ' + post._id);
   };
   const handleClose = () => setOpen(false);
@@ -58,7 +65,7 @@ function Posts({post, currentID, setCUrrentID}) {
         aria-labelledby='modal-modal-title'
         aria-describedby='modal-modal-description'
       >
-        <FormModal currentID={currentID} setCUrrentID={setCUrrentID} />
+        <FormModal currentID={currentID} />
       </Modal>
     );
   }
@@ -72,13 +79,31 @@ function Posts({post, currentID, setCUrrentID}) {
         >
           <CardMedia
             component='img'
-            height='140'
-            img
-            src={post.selectedFile}
+            height='100%'
+            image={
+              post.selectedFile ||
+              'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'
+            }
             alt='image'
           />
           <CardContent>
-            <Typography gutterBottom variant='h5' component='div'>
+            <Typography variant='body2'>
+              {moment(post.createdAt).fromNow()}
+            </Typography>
+            <Typography
+              variant='body2'
+              color='textSecondary'
+              component='h2'
+              className={classes.tag}
+            >
+              {post.tags.map((tag) => `#${tag} `)}
+            </Typography>
+
+            <Typography
+              gutterBottom
+              variant='h5'
+              className={classes.titleMessage}
+            >
               {post.title}
             </Typography>
             <Typography variant='body2' color='text.secondary'>

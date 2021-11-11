@@ -28,13 +28,13 @@ function Home() {
     return (
       <>
         <h1>Welcome to my blog</h1>
-        <p>This website was created using MERN stack</p>
+        <div>This website was created using MERN stack</div>
       </>
     );
   }
 
   // redux
-  const [currentID, setCUrrentID] = useState(0);
+  const [currentID, setCurrentID] = useState(0);
   const dispatch = useDispatch();
 
   // UseSelector
@@ -61,7 +61,7 @@ function Home() {
             <Posts
               post={post}
               currentID={currentID}
-              setCUrrentID={setCUrrentID}
+              setCurrentID={setCurrentID}
             />
           </Grid>
         ))}

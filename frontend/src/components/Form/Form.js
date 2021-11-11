@@ -4,6 +4,7 @@ import {useDispatch} from 'react-redux';
 import FileBase from 'react-file-base64';
 import {createPost} from '../../actions/posts';
 import {makeStyles} from '@material-ui/core/styles';
+import {useNavigate} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Form = () => {
+  const navigate = useNavigate();
   const [postData, setPostData] = useState({
     creator: '',
     title: '',
@@ -57,6 +59,7 @@ const Form = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(createPost(postData));
+    navigate('/Home');
   };
 
   return (

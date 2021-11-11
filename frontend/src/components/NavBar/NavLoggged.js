@@ -135,7 +135,7 @@ export default function NavLoggged() {
         <IconButton size='large' color='inherit'>
           <AddCircleIcon />
         </IconButton>
-        <p>New Post</p>
+        <div>New Post</div>
       </MenuItem>
       <MenuItem onClick={() => {}}>
         <IconButton size='large' aria-label='show 4 new mails' color='inherit'>
@@ -143,7 +143,7 @@ export default function NavLoggged() {
             <MailIcon />
           </Badge>
         </IconButton>
-        <p>Messages</p>
+        <div>Messages</div>
       </MenuItem>
       <MenuItem onClick={() => {}}>
         <IconButton
@@ -155,7 +155,7 @@ export default function NavLoggged() {
             <NotificationsIcon />
           </Badge>
         </IconButton>
-        <p>Notifications</p>
+        <div>Notifications</div>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -167,7 +167,7 @@ export default function NavLoggged() {
         >
           <AccountCircle />
         </IconButton>
-        <p>Profile</p>
+        <div>Profile</div>
       </MenuItem>
     </Menu>
   );
@@ -188,7 +188,6 @@ export default function NavLoggged() {
           <Typography
             variant='h6'
             noWrap
-            component='div'
             sx={{display: {xs: 'none', sm: 'block'}}}
           >
             <IconButton color='inherit' onClick={() => navigate('/')}>

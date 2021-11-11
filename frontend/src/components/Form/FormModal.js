@@ -48,7 +48,7 @@ const style = {
   p: 4,
 };
 
-const Form = ({currentID, setCUrrentID}) => {
+const Form = ({currentID}) => {
   const [postData, setPostData] = useState({
     creator: '',
     title: '',
@@ -57,35 +57,23 @@ const Form = ({currentID, setCUrrentID}) => {
     selectedFile: '',
   });
   const post = useSelector((state) =>
-    currentID ? state.posts.find((message) => message._id === currentID) : null
+    currentID ? state.posts.find((message) => message._id === currentID) : 0
   );
-  const dispatch = useDispatch();
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (post) setPostData(post);
   }, [post]);
 
-  const clear = () => {
-    setCUrrentID(0);
-    setPostData({
-      creator: '',
-      title: '',
-      message: '',
-      tags: '',
-      selectedFile: '',
-    });
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (currentID === 0) {
       dispatch(createPost(postData));
     } else {
       dispatch(updatePost(currentID, postData));
     }
-    clear();
+    window.location.reload(false);
   };
 
   return (
@@ -166,14 +154,6 @@ const Form = ({currentID, setCUrrentID}) => {
               type='submit'
             >
               Submit
-            </IconButton>
-            <IconButton
-              variant='contained'
-              color='secondary'
-              size='small'
-              onClick={clear}
-            >
-              Clear
             </IconButton>
           </div>
         </form>

@@ -31,10 +31,8 @@ const Profile = () => {
         <div>
           <img src={user.picture} alt={user.name} />
           <h2>{user.name}</h2>
-          <p>
-            <b>Email: </b>
-            {user.email}
-          </p>
+          <b>Email: </b>
+          {user.email}
           <div className={classes.verified}>{verified}</div>
         </div>
       </div>
