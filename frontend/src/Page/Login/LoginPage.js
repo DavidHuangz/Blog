@@ -1,5 +1,5 @@
 import '../../App.css';
-import Profile from '../../components/Profile';
+import Profile from '../../components/Login/Profile';
 import {useAuth0} from '@auth0/auth0-react';
 
 function LoginPage() {

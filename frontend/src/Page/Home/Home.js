@@ -1,14 +1,15 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Posts from '../../components/Posts/Posts';
+import {Grid} from '@material-ui/core';
 
 // redux
 import {useDispatch} from 'react-redux';
 import {getPosts} from '../../actions/posts';
+import {useSelector} from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: '3vw',
     display: 'flex',
     justifyContent: 'Center',
     alignItems: 'Center',
@@ -16,44 +17,56 @@ const useStyles = makeStyles((theme) => ({
   },
   boxes: {
     display: 'flex',
-    flexWrap: 'wrap',
-    flexDirection: 'row',
     justifyContent: 'center',
-  },
-  paragraph: {
-    paddingBottom: 20,
   },
 }));
 
 function Home() {
   const classes = useStyles();
 
+  function HomeTitle() {
+    return (
+      <>
+        <h1>Welcome to my blog</h1>
+        <p>This website was created using MERN stack</p>
+      </>
+    );
+  }
+
   // redux
+  const [cuurentID, setCUrrentID] = useState(0);
   const dispatch = useDispatch();
+
+  // UseSelector
+  const posts = useSelector((state) => state.posts);
+  console.log(posts);
+
   useEffect(() => {
     dispatch(getPosts());
   }, [dispatch]);
 
-  // // Dynamically add cards
-  // const cardArr = [];
-  // const lengthofCards = 6;
-  // for (let i = 0; i < lengthofCards; i++) {
-  //   cardArr.push(<Posts />);
-  // }
-
   return (
-    <div className={classes.root}>
-      <h1>Welcome to my blog</h1>
-      <p className={classes.paragraph}>
-        This website was created using MERN stack
-      </p>
-      <div className={classes.boxes}>
-        <Posts />
-        <Posts />
-        <Posts />
-        <Posts />
-      </div>
-    </div>
+    <>
+      <div className={classes.root}> {HomeTitle()}</div>
+      <Grid container alignItems='stretch'>
+        {posts.map((post) => (
+          <Grid
+            className={classes.boxes}
+            key={post._id}
+            item
+            xs={12}
+            sm={3}
+            md={4}
+          >
+            <Posts
+              post={post}
+              cuurentID={cuurentID}
+              setCUrrentID={setCUrrentID}
+            />
+          </Grid>
+        ))}
+      </Grid>
+    </>
   );
 }
 

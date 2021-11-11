@@ -48,7 +48,7 @@ const style = {
   p: 4,
 };
 
-const Form = ({currentId, setCurrentId}) => {
+const Form = ({cuurentID, setCUrrentID}) => {
   const [postData, setPostData] = useState({
     creator: '',
     title: '',
@@ -57,7 +57,7 @@ const Form = ({currentId, setCurrentId}) => {
     selectedFile: '',
   });
   const post = useSelector((state) =>
-    currentId ? state.posts.find((message) => message._id === currentId) : null
+    cuurentID ? state.posts.find((message) => message._id === cuurentID) : null
   );
   const dispatch = useDispatch();
   const classes = useStyles();
@@ -67,7 +67,7 @@ const Form = ({currentId, setCurrentId}) => {
   }, [post]);
 
   const clear = () => {
-    setCurrentId(0);
+    setCUrrentID(0);
     setPostData({
       creator: '',
       title: '',
@@ -80,13 +80,11 @@ const Form = ({currentId, setCurrentId}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // if (currentId === 0) {
-    dispatch(createPost(postData));
-    //   clear();
-    // } else {
-    //   dispatch(updatePost(currentId, postData));
-    //   clear();
-    // }
+    if (cuurentID) {
+      dispatch(updatePost(cuurentID, postData));
+    } else {
+      dispatch(createPost(postData));
+    }
   };
 
   return (
@@ -99,7 +97,7 @@ const Form = ({currentId, setCurrentId}) => {
           onSubmit={handleSubmit}
         >
           <Typography variant='h6'>
-            {currentId ? `Editing "${post.title}"` : 'Title: Jessie Zheng'}
+            {cuurentID ? `Editing "${post.title}"` : 'Title: Jessie Zheng'}
           </Typography>
           <TextField
             name='creator'

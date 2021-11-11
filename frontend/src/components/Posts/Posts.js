@@ -1,6 +1,7 @@
 import React from 'react';
-import {useSelector} from 'react-redux';
 import {makeStyles} from '@material-ui/core';
+
+// importing icons & others
 import {
   Button,
   CardActions,
@@ -11,15 +12,15 @@ import {
   IconButton,
   Modal,
 } from '@mui/material';
-import reptile from './reptile.jpg';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
+// importing component
 import FormModal from '../Form/FormModal';
 
 var UseStyles = makeStyles({
   root: {
-    padding: 30,
+    padding: 10,
   },
   Box: {
     maxWidth: 350,
@@ -28,15 +29,25 @@ var UseStyles = makeStyles({
   cardClick: {
     cursor: 'pointer',
   },
+  messageText: {
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    maxHeight: 100,
+    maxWidth: 350,
+  },
   settingsButton: {marginLeft: 190},
 });
 
-function Posts({}) {
+function Posts({post, cuurentID, setCUrrentID}) {
   const classes = UseStyles();
 
   // Modal for form editing
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+  const handleOpen = () => {
+    setOpen(true);
+    setCUrrentID(post._id);
+    console.log('CurrentPostID: ' + post._id);
+  };
   const handleClose = () => setOpen(false);
 
   function modalForm() {
@@ -47,14 +58,10 @@ function Posts({}) {
         aria-labelledby='modal-modal-title'
         aria-describedby='modal-modal-description'
       >
-        <FormModal />
+        <FormModal cuurentID={cuurentID} setCUrrentID={setCUrrentID} />
       </Modal>
     );
   }
-
-  //redux
-  const posts = useSelector((state) => state.posts);
-  console.log(posts);
 
   return (
     <div className={classes.root}>
@@ -67,22 +74,21 @@ function Posts({}) {
             component='img'
             height='140'
             img
-            src={reptile}
-            alt='reptile'
+            src={post.selectedFile}
+            alt='image'
           />
           <CardContent>
             <Typography gutterBottom variant='h5' component='div'>
-              Lizard
+              {post.title}
             </Typography>
             <Typography variant='body2' color='text.secondary'>
-              Lizards are a widespread group of squamate reptiles, with over
-              6,000 species, ranging across all continents except Antarctica
+              <div className={classes.messageText}>{post.message}</div>
             </Typography>
           </CardContent>
         </div>
         <CardActions>
           <Button size='small' onClick={() => alert('Like')}>
-            Like (1)
+            Like ({post.likeCount})
           </Button>
           <div className={classes.settingsButton}>
             <IconButton size='small' onClick={() => alert('Delete')}>
