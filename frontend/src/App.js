@@ -1,11 +1,11 @@
 import {Routes, Route, Navigate, BrowserRouter} from 'react-router-dom';
 import {useAuth0} from '@auth0/auth0-react';
 import './App.css';
-import {makeStyles} from '@material-ui/core/styles';
 
 // redux
 // import {useDispatch} from 'react-redux';
 // import {getPosts} from './actions/posts';
+// import React, {useEffect, useState} from 'react';
 
 // imports from components
 import NavLoggged from './components/NavBar/NavLoggged';
@@ -17,16 +17,11 @@ import Home from './Page/Home/Home';
 import LoginPage from './Page/Login/LoginPage';
 import CreatePost from './Page/CreatePost/CreatePost';
 
-const useStyles = makeStyles((theme) => ({
-  App: {
-    // position: 'relative',
-    // minHeight: '50%',
-  },
-}));
-
 function App() {
-  const classes = useStyles();
   const {isAuthenticated} = useAuth0();
+
+  // Redux
+  // const [cuurentID, setCUrrentID] = useState(0);
   // const dispatch = useDispatch();
 
   // useEffect(() => {
@@ -34,7 +29,7 @@ function App() {
   // }, [dispatch]);
 
   return (
-    <div className={classes.App}>
+    <div>
       <BrowserRouter>
         {!isAuthenticated ? <NavNotLogged /> : <NavLoggged />}
         <Routes>

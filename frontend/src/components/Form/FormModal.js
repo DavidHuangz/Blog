@@ -8,7 +8,6 @@ import {Box} from '@mui/system';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: 100,
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
     },
@@ -32,6 +31,9 @@ const useStyles = makeStyles((theme) => ({
   buttonSubmit: {
     marginBottom: 10,
   },
+  textsizeForm: {
+    fontSize: 1,
+  },
 }));
 
 const style = {
@@ -41,8 +43,8 @@ const style = {
   transform: 'translate(-50%, -50%)',
   width: '50%',
   bgcolor: 'white',
-  border: '1px solid #000',
-  boxShadow: 24,
+  border: '0px solid #000',
+  borderRadius: 2,
   p: 4,
 };
 
@@ -97,12 +99,14 @@ const Form = ({currentId, setCurrentId}) => {
           onSubmit={handleSubmit}
         >
           <Typography variant='h6'>
-            {currentId ? `Editing "${post.title}"` : 'Creating a Memory'}
+            {currentId ? `Editing "${post.title}"` : 'Title: Jessie Zheng'}
           </Typography>
           <TextField
             name='creator'
             variant='outlined'
             label='Creator'
+            inputProps={{style: {fontSize: '1rem'}}} // font size of input text
+            InputLabelProps={{style: {fontSize: '1rem'}}} // label size
             fullWidth
             value={postData.creator}
             onChange={(e) =>
@@ -113,6 +117,8 @@ const Form = ({currentId, setCurrentId}) => {
             name='title'
             variant='outlined'
             label='Title'
+            inputProps={{style: {fontSize: '1rem'}}} // font size of input text
+            InputLabelProps={{style: {fontSize: '1rem'}}} // label size
             fullWidth
             value={postData.title}
             onChange={(e) => setPostData({...postData, title: e.target.value})}
@@ -121,6 +127,8 @@ const Form = ({currentId, setCurrentId}) => {
             name='message'
             variant='outlined'
             label='Message'
+            inputProps={{style: {fontSize: '1rem'}}} // font size of input text
+            InputLabelProps={{style: {fontSize: '1rem'}}} // label size
             fullWidth
             multiline
             rows={4}
@@ -133,6 +141,8 @@ const Form = ({currentId, setCurrentId}) => {
             name='tags'
             variant='outlined'
             label='Tags (coma separated)'
+            inputProps={{style: {fontSize: '1rem'}}} // font size of input text
+            InputLabelProps={{style: {fontSize: '1rem'}}} // label size
             fullWidth
             value={postData.tags}
             onChange={(e) =>

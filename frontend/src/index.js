@@ -17,16 +17,15 @@ const domain = process.env.REACT_APP_AUTH0_DOMAIN;
 const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
 
 ReactDOM.render(
-  <Auth0Provider
-    store={store}
-    domain={domain}
-    clientId={clientId}
-    redirectUri={window.location.origin + '/LoginPage'}
-    cacheLocation='localstorage'
-  >
-    <Provider store={store}>
+  <Provider store={store}>
+    <Auth0Provider
+      domain={domain}
+      clientId={clientId}
+      redirectUri={window.location.origin + '/LoginPage'}
+      cacheLocation='localstorage'
+    >
       <App />
-    </Provider>
-  </Auth0Provider>,
+    </Auth0Provider>
+  </Provider>,
   document.getElementById('root')
 );

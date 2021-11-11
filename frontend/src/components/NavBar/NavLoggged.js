@@ -131,7 +131,13 @@ export default function NavLoggged() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
+      <MenuItem onClick={() => navigate('/CreatePost')}>
+        <IconButton size='large' color='inherit'>
+          <AddCircleIcon />
+        </IconButton>
+        <p>New Post</p>
+      </MenuItem>
+      <MenuItem onClick={() => {}}>
         <IconButton size='large' aria-label='show 4 new mails' color='inherit'>
           <Badge badgeContent={4} color='error'>
             <MailIcon />
@@ -139,7 +145,7 @@ export default function NavLoggged() {
         </IconButton>
         <p>Messages</p>
       </MenuItem>
-      <MenuItem>
+      <MenuItem onClick={() => {}}>
         <IconButton
           size='large'
           aria-label='show 17 new notifications'
