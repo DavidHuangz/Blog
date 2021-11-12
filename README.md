@@ -1,6 +1,6 @@
 # Visit the Blog!
 
-[https://daveblogger.xyz/Home] or [https://daveblogger.netlify.app/Home]
+https://daveblogger.xyz/Home or https://daveblogger.netlify.app/Home
 
 ## Available Scripts
 
