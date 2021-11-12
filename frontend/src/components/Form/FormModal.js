@@ -1,5 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import {TextField, IconButton, Typography} from '@material-ui/core';
+import {
+  TextField,
+  IconButton,
+  Typography,
+  CircularProgress,
+} from '@material-ui/core';
 import {useDispatch, useSelector} from 'react-redux';
 import FileBase from 'react-file-base64';
 import {createPost, updatePost} from '../../actions/posts';
@@ -56,6 +61,18 @@ const Form = ({currentID}) => {
     tags: '',
     selectedFile: '',
   });
+  const [loading, setLoading] = React.useState(false);
+  const timer = React.useRef();
+
+  const loadingButtn = () => {
+    if (!loading) {
+      setLoading(true);
+      timer.current = window.setTimeout(() => {
+        setLoading(false);
+      }, 4000);
+    }
+  };
+
   const post = useSelector((state) =>
     currentID ? state.posts.find((message) => message._id === currentID) : 0
   );
@@ -73,7 +90,8 @@ const Form = ({currentID}) => {
     } else {
       dispatch(updatePost(currentID, postData));
     }
-    // window.location.reload(false);
+    setLoading(true);
+    loadingButtn();
   };
 
   return (
@@ -145,16 +163,22 @@ const Form = ({currentID}) => {
               }
             />
           </div>
-          <div className={classes.FormButtons}>
-            <IconButton
-              className={classes.buttonSubmit}
-              variant='contained'
-              color='primary'
-              size='large'
-              type='submit'
-            >
-              Submit
-            </IconButton>
+          <div>
+            {loading ? (
+              <CircularProgress className={classes.loadingScreen} />
+            ) : (
+              <div className={classes.FormButtons}>
+                <IconButton
+                  className={classes.buttonSubmit}
+                  variant='contained'
+                  color='primary'
+                  size='large'
+                  type='submit'
+                >
+                  Submit
+                </IconButton>
+              </div>
+            )}
           </div>
         </form>
       </div>
