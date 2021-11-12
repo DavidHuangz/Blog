@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Posts from '../../components/Posts/Posts';
 import {Grid} from '@material-ui/core';
+import CircularProgress from '@mui/material/CircularProgress';
 
 // redux
 import {useDispatch} from 'react-redux';
@@ -11,9 +12,11 @@ import {useSelector} from 'react-redux';
 const useStyles = makeStyles(() => ({
   root: {
     display: 'flex',
-    justifyContent: 'Center',
-    alignItems: 'Center',
+    alignItems: 'center',
     flexDirection: 'column',
+  },
+  loadingScreen: {
+    padding: 100,
   },
   boxes: {
     display: 'flex',
@@ -47,7 +50,14 @@ function Home() {
 
   return (
     <>
-      <div className={classes.root}> {HomeTitle()}</div>
+      <div className={classes.root}>
+        {HomeTitle()}
+        <div>
+          {posts.length === 0 ? (
+            <CircularProgress className={classes.loadingScreen} />
+          ) : null}
+        </div>
+      </div>
       <Grid container alignItems='stretch'>
         {posts.map((post) => (
           <Grid
