@@ -73,7 +73,7 @@ const Form = ({currentID}) => {
     } else {
       dispatch(updatePost(currentID, postData));
     }
-    window.location.reload(false);
+    // window.location.reload(false);
   };
 
   return (
