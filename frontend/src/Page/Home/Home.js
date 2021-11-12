@@ -55,8 +55,8 @@ function Home() {
             key={post._id}
             item
             xs={12}
-            sm={3}
-            md={4}
+            sm={6}
+            md={3}
           >
             <Posts
               post={post}
