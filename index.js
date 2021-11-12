@@ -14,7 +14,7 @@ app.use(cors());
 app.use('/posts', postRoutes);
 
 app.get('/', (req, res) => {
-  res.send('Hello to DaveBlogger API');
+  res.send('DaveBlogger API Heroku');
 });
 
 const PORT = process.env.PORT || 5000;
