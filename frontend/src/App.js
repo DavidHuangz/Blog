@@ -3,7 +3,6 @@ import {useAuth0} from '@auth0/auth0-react';
 import './App.css';
 import {Provider} from 'react-redux';
 import store from './store';
-import ScrollButton from 'react-scroll-button';
 
 // imports from components
 import NavLoggged from './components/NavBar/NavLoggged';
@@ -32,12 +31,6 @@ function App() {
             <Route path='*' element={<Navigate to='/Home' />} />
           </Routes>
           <Footer />
-          <ScrollButton
-            targetId={'topPage'}
-            behavior={'smooth'}
-            buttonBackgroundColor={'green'}
-            iconType={'chevron-up'}
-          />
         </BrowserRouter>
       </Provider>
     </div>
