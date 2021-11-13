@@ -1,66 +1,33 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import {Box} from '@mui/system';
-import {CardContent, Typography} from '@mui/material';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import CommentsCard from '../../components/BlogPost/CommentsCard';
 import ScrollButton from 'react-scroll-button';
 
-var useStyles = makeStyles({
-  container: {
-    paddingBottom: '20px',
-  },
-  title: {
-    color: '#105100',
-    fontSize: 30,
-    fontWeight: '700',
-    font: 'Roboto',
-    paddingBottom: '1vw',
-  },
-  icon: {
-    paddingRight: 10,
-    color: 'gray',
-    fontSize: 50,
-  },
-  user: {
+// importing component
+import CommentsCard from '../../components/BlogPost/CommentsCard';
+import BlogInfo from '../../components/BlogPost/BlogInfo';
+
+const useStyles = makeStyles(() => ({
+  root: {
+    padding: 50,
     display: 'flex',
-    overflow: 'auto',
-    width: 'auto',
-    flexDirection: 'row',
     alignItems: 'center',
-    paddingBottom: 10,
+    flexDirection: 'column',
   },
-  deleteIcon: {
-    padding: '0.5vw',
+  loadingScreen: {
+    padding: 100,
+  },
+  boxes: {
     display: 'flex',
-    marginLeft: 'auto',
-    justifyContent: 'flex-end',
-    '&:hover': {
-      color: 'red',
-    },
+    justifyContent: 'center',
   },
-});
+}));
 
 function BlogPost() {
   const classes = useStyles();
 
   return (
-    <div id='topPage'>
-      <CommentsCard /> <CommentsCard />
-      <CommentsCard />
-      <CommentsCard />
-      <CommentsCard />
-      <CommentsCard />
-      <CommentsCard />
-      <CommentsCard />
-      <CommentsCard />
-      <CommentsCard />
-      <CommentsCard />
-      <CommentsCard />
-      <CommentsCard />
-      <CommentsCard />
-      <CommentsCard />
-      <CommentsCard />
+    <div id='topPage' className={classes.root}>
+      <BlogInfo />
       <CommentsCard />
       <ScrollButton
         targetId={'topPage'}
