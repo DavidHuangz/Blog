@@ -1,6 +1,7 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core';
 import moment from 'moment';
+import {useNavigate} from 'react-router-dom';
 
 // importing icons & others
 import {
@@ -53,6 +54,7 @@ var UseStyles = makeStyles({
 function Posts({post, currentID, setCurrentID}) {
   const classes = UseStyles();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // Modal for form editing
   const [open, setOpen] = React.useState(false);
@@ -81,7 +83,7 @@ function Posts({post, currentID, setCurrentID}) {
       <Card className={classes.Box}>
         <div
           className={classes.cardClick}
-          onClick={() => alert('Hello from here')}
+          onClick={() => navigate('/BlogPost')}
         >
           <CardMedia
             component='img'

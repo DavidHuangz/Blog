@@ -3,6 +3,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import Posts from '../../components/Posts/Posts';
 import {Grid} from '@material-ui/core';
 import CircularProgress from '@mui/material/CircularProgress';
+import ScrollButton from 'react-scroll-button';
 
 // redux
 import {useDispatch} from 'react-redux';
@@ -50,7 +51,7 @@ function Home() {
 
   return (
     <>
-      <div className={classes.root}>
+      <div className={classes.root} id='topPage'>
         {HomeTitle()}
         <div>
           {posts.length === 0 ? (
@@ -76,6 +77,12 @@ function Home() {
           </Grid>
         ))}
       </Grid>
+      <ScrollButton
+        targetId={'topPage'}
+        behavior={'smooth'}
+        buttonBackgroundColor={'green'}
+        iconType={'chevron-up'}
+      />
     </>
   );
 }
