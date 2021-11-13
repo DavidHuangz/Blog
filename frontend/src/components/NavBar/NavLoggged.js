@@ -6,14 +6,14 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
-import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
-import NotificationsIcon from '@mui/icons-material/Notifications';
+// import Badge from '@mui/material/Badge';
+// import MailIcon from '@mui/icons-material/Mail';
+// import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import {useNavigate} from 'react-router-dom';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
@@ -63,56 +63,17 @@ const StyledInputBase = styled(InputBase)(({theme}) => ({
 
 export default function NavLoggged() {
   const navigate = useNavigate();
-  const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
-  const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
   };
 
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-    handleMobileMenuClose();
-  };
-
-  const handleMenuProfileClose = () => {
-    setAnchorEl(null);
-    handleMobileMenuClose();
-    navigate('/LoginPage');
-  };
-
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
-
-  const menuId = 'primary-search-account-menu';
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
-      }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
-      }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <MenuItem onClick={handleMenuProfileClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-    </Menu>
-  );
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
   const renderMobileMenu = (
@@ -137,7 +98,7 @@ export default function NavLoggged() {
         </IconButton>
         <div>New Post</div>
       </MenuItem>
-      <MenuItem onClick={() => {}}>
+      {/* <MenuItem onClick={() => {}}>
         <IconButton size='large' aria-label='show 4 new mails' color='inherit'>
           <Badge badgeContent={4} color='error'>
             <MailIcon />
@@ -156,15 +117,9 @@ export default function NavLoggged() {
           </Badge>
         </IconButton>
         <div>Notifications</div>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          size='large'
-          aria-label='account of current user'
-          aria-controls='primary-search-account-menu'
-          aria-haspopup='true'
-          color='inherit'
-        >
+      </MenuItem> */}
+      <MenuItem>
+        <IconButton size='large' color='inherit'>
           <AccountCircle />
         </IconButton>
         <div>Profile</div>
@@ -191,7 +146,7 @@ export default function NavLoggged() {
             sx={{display: {xs: 'none', sm: 'block'}}}
           >
             <IconButton color='inherit' onClick={() => navigate('/')}>
-              Blog{' '}
+              Blog
             </IconButton>
           </Typography>
           <Search>
@@ -212,7 +167,7 @@ export default function NavLoggged() {
             >
               <AddCircleIcon />
             </IconButton>
-
+            {/* 
             <IconButton
               size='large'
               aria-label='show 4 new mails'
@@ -230,18 +185,15 @@ export default function NavLoggged() {
               <Badge badgeContent={17} color='error'>
                 <NotificationsIcon />
               </Badge>
-            </IconButton>
+            </IconButton> */}
             <IconButton
               size='large'
               aria-label='account of current user'
-              aria-controls={menuId}
-              aria-haspopup='true'
-              onClick={handleProfileMenuOpen}
+              onClick={() => navigate('/LoginPage')}
               color='inherit'
             >
               <AccountCircle />
             </IconButton>
-
             <IconButton size='large' color='inherit' edge='end'>
               <LogoutButton />
             </IconButton>
@@ -261,7 +213,6 @@ export default function NavLoggged() {
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
-      {renderMenu}
     </Box>
   );
 }

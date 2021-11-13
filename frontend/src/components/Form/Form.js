@@ -30,6 +30,11 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
   },
   buttonSubmit: {
+    fontSize: '1.5rem',
+    marginBottom: 10,
+  },
+  buttonClear: {
+    fontSize: '1rem',
     marginBottom: 10,
   },
 }));
@@ -93,7 +98,7 @@ const Form = () => {
           label='Message'
           fullWidth
           multiline
-          rows={4}
+          rows={20}
           value={postData.message}
           onChange={(e) => setPostData({...postData, message: e.target.value})}
         />
@@ -121,15 +126,14 @@ const Form = () => {
             className={classes.buttonSubmit}
             variant='contained'
             color='primary'
-            size='large'
             type='submit'
           >
             Submit
           </IconButton>
           <IconButton
+            className={classes.buttonClear}
             variant='contained'
             color='secondary'
-            size='small'
             onClick={clear}
           >
             Clear

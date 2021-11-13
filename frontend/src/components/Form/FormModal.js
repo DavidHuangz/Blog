@@ -25,6 +25,9 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: 'wrap',
     justifyContent: 'center',
   },
+  EditTitle: {
+    fontSize: '1.5rem',
+  },
   fileInput: {
     width: '97%',
     margin: '10px 0',
@@ -34,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
   },
   buttonSubmit: {
+    fontSize: '1.5rem',
     marginBottom: 10,
   },
   textsizeForm: {
@@ -103,8 +107,8 @@ const Form = ({currentID}) => {
           className={`${classes.root} ${classes.form}`}
           onSubmit={handleSubmit}
         >
-          <Typography variant='h6'>
-            {currentID ? `Editing "${post.title}"` : 'Title: Jessie Zheng'}
+          <Typography variant='h6' className={classes.EditTitle}>
+            {currentID ? 'Editing' : 'Editing'}
           </Typography>
           <TextField
             name='creator'
@@ -136,7 +140,7 @@ const Form = ({currentID}) => {
             InputLabelProps={{style: {fontSize: '1rem'}}} // label size
             fullWidth
             multiline
-            rows={4}
+            rows={20}
             value={postData.message}
             onChange={(e) =>
               setPostData({...postData, message: e.target.value})
@@ -172,7 +176,6 @@ const Form = ({currentID}) => {
                   className={classes.buttonSubmit}
                   variant='contained'
                   color='primary'
-                  size='large'
                   type='submit'
                 >
                   Submit
