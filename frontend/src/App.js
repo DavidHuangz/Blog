@@ -18,18 +18,20 @@ function App() {
   const {isAuthenticated} = useAuth0();
 
   return (
-    <Provider store={store}>
-      <BrowserRouter>
-        {!isAuthenticated ? <NavNotLogged /> : <NavLoggged />}
-        <Routes>
-          <Route path='/Home' element={<Home />} />
-          <Route path='/LoginPage' element={<LoginPage />} />
-          <Route path='/CreatePost' element={<CreatePost />} />
-          <Route path='*' element={<Navigate to='/Home' />} />
-        </Routes>
-        {/* <Footer /> */}
-      </BrowserRouter>
-    </Provider>
+    <div className='App'>
+      <Provider store={store}>
+        <BrowserRouter>
+          {!isAuthenticated ? <NavNotLogged /> : <NavLoggged />}
+          <Routes>
+            <Route path='/Home' element={<Home />} />
+            <Route path='/LoginPage' element={<LoginPage />} />
+            <Route path='/CreatePost' element={<CreatePost />} />
+            <Route path='*' element={<Navigate to='/Home' />} />
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+      </Provider>
+    </div>
   );
 }
 

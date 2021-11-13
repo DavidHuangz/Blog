@@ -118,7 +118,7 @@ export default function NavLoggged() {
         </IconButton>
         <div>Notifications</div>
       </MenuItem> */}
-      <MenuItem>
+      <MenuItem onClick={() => navigate('/LoginPage')}>
         <IconButton size='large' color='inherit'>
           <AccountCircle />
         </IconButton>
