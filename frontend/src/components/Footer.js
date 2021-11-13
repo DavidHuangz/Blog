@@ -23,7 +23,7 @@ function Copyright() {
       <Link
         color='inherit'
         target='_blank'
-        href='https://sites.google.com/view/applevr/home'
+        href='https://www.termsfeed.com/live/4330e882-fa48-4676-86b4-379ab6beefda'
       >
         Your Website
       </Link>{' '}
