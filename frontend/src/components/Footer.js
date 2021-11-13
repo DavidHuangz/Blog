@@ -3,17 +3,7 @@ import {Link, Typography} from '@mui/material';
 import {Box} from '@mui/system';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    bottom: 0,
-    left: 0,
-    right: 0,
-    display: 'flex',
-    flexDirection: 'column',
-    position: 'absolute',
-    '@media (max-width: 1030px)': {
-      position: 'relative',
-    },
-  },
+  root: {},
 }));
 
 function Copyright() {

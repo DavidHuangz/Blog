@@ -31,11 +31,9 @@ const useStyles = makeStyles((theme) => ({
   },
   buttonSubmit: {
     fontSize: '1.5rem',
-    marginBottom: 10,
   },
   buttonClear: {
     fontSize: '1rem',
-    marginBottom: 10,
   },
 }));
 
